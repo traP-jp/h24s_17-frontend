@@ -11,13 +11,16 @@
   </div>
 </template>
 
+
 <script setup lang="ts">
 import { LMap, LTileLayer, LMarker, LTooltip } from "@vue-leaflet/vue-leaflet";
 import { type PointTuple } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { ref } from "vue";
 
+
 const zoom = ref(20);
 const center = ref<PointTuple>([35.606895, 139.684874]);
 </script>
 <style></style>
+
