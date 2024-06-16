@@ -4,13 +4,12 @@ import { useRoute } from "vue-router";
 
 const { query } = useRoute();
 const secret = query.secret as string;
-const token = await fetch(`/api/stand`, {
+const resp = await fetch(`/api/stand`, {
   headers: {
     "X-Mac-Secret": secret,
   },
-})
-  .then((v) => v.json())
-  .then((v) => v["token"]);
+}).then((v) => v.json());
+const token = resp["token"];
 // const token = "hoge";
 const checkInLink = `https://h24s17.trap.show/checkin?token=${token}`;
 </script>
