@@ -5,11 +5,17 @@
     persistent
   >
     <v-card>
-      <div>{{ userId }}さん！ ハッカソンへようこそ！</div>
-      <div>rasberryPiを操作して記念撮影をしてね！</div>
+      <div :class="$style.mordal">
+        <h1>{{ userId }}さん！ ハッカソンへようこそ！</h1>
+        <div>rasberryPiを操作して記念撮影をしてね！</div>
+      </div>
     </v-card>
   </v-dialog>
-  <div v-if="!showMordal">
+  <div v-if="!showMordal" :class="$style.container">
+    <div :class="$style.text">
+      <h2>チェックイン中です……</h2>
+      <div>待っててね</div>
+    </div>
     <v-progress-circular model-value="20" indeterminate></v-progress-circular>
   </div>
 </template>
@@ -34,3 +40,18 @@ const userId = ref("");
   router.push("/");
 })();
 </script>
+
+<style module lang="scss">
+.container {
+  display: grid;
+  justify-items: center;
+  gap: 32px;
+}
+.text {
+  display: grid;
+  justify-items: center;
+}
+.mordal {
+  padding: 64px;
+}
+</style>
