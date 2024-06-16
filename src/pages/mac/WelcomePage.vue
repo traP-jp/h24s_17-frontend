@@ -10,9 +10,9 @@ const resp = await fetch(`/api/stand`, {
   },
 }).then((v) => v.json());
 const token = resp["token"];
-console.log(resp);
 // const token = "hoge";
 const checkInLink = `https://h24s17.trap.show/checkin?token=${token}`;
+console.log(resp, token, checkInLink);
 </script>
 
 <template>
