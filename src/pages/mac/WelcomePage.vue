@@ -3,8 +3,12 @@ import QrcodeVue from "qrcode.vue";
 import { useRoute } from "vue-router";
 
 const { query } = useRoute();
-const secret = query.secret;
-const token = await fetch(`/api/stand?secret=${secret}`)
+const secret = query.secret as string;
+const token = await fetch(`/api/stand`, {
+  headers: {
+    "X-Mac-Secret": secret,
+  },
+})
   .then((v) => v.json())
   .then((v) => v.token);
 const checkInLink = `https://h24s17.trap.show/checkin?token=${token}`;
