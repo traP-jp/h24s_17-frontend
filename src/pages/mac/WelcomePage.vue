@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import QrcodeVue from "qrcode.vue";
 
-// const token = await fetch("/api/stand")
-//   .then((v) => v.json())
-//   .then((v) => v.token);
-const token = "hoge";
+const token = await fetch("/api/stand")
+  .then((v) => v.json())
+  .then((v) => v.token);
 const checkInLink = `https://h24s17.trap.show/checkin?token=${token}`;
 </script>
 
