@@ -5,8 +5,8 @@
     persistent
   >
     <v-card>
-      <div>{{ "foo" }}さん！ ハッカソンへようこそ！</div>
-      <div>記念撮影をしてね！</div>
+      <div>{{ userId }}さん！ ハッカソンへようこそ！</div>
+      <div>rasberryPiを操作して記念撮影をしてね！</div>
     </v-card>
   </v-dialog>
   <div v-if="!showMordal">
@@ -24,11 +24,10 @@ const router = useRouter();
 const token = query.token;
 const userId = ref("");
 (async () => {
-  const response = await fetch(`/api/checkin?token=${token}`, {
+  const respBody = await fetch(`/api/checkin?token=${token}`, {
     method: "POST",
-  });
-
-  userId.value = response.headers.get("X-Forwarded-User") || "unknown";
+  }).then((v) => v.json());
+  userId.value = respBody.userId;
   showMordal.value = true;
   await new Promise((resolve) => setTimeout(resolve, 5000));
 
