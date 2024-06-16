@@ -33,7 +33,7 @@ const userId = ref("");
   const respBody = await fetch(`/api/checkin?token=${token}`, {
     method: "POST",
   }).then((v) => v.json());
-  userId.value = respBody.userId;
+  userId.value = respBody["userID"];
   showMordal.value = true;
   await new Promise((resolve) => setTimeout(resolve, 5000));
 
