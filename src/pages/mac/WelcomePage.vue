@@ -12,22 +12,14 @@ const resp = await fetch(`/api/stand`, {
 const token = resp["token"];
 // const token = "hoge";
 const checkInLink = `https://h24s17.trap.show/checkin?token=${token}`;
-console.log(resp, token, checkInLink);
 </script>
 
 <template>
-  <div :class="$style.qrContainer">
-    <h1>24年度春ハッカソン会場 sponserd by Engineer guildへようこそ！</h1>
-    <!-- <h1>{{ checkInLink }}</h1> -->
-    <h2>QRコードを読み取ってチェックイン</h2>
-    <qrcode-vue :value="checkInLink" level="M" render-as="svg" :size="280" />
-  </div>
+  <h1>24年度春ハッカソン会場 sponserd by Engineer guildへようこそ！</h1>
+  <h2>QRコードを読み取ってチェックイン</h2>
+
+  <h3>{{ checkInLink }}</h3>
+  <qrcode-vue :value="checkInLink" level="M" render-as="svg" :size="280" />
 </template>
 
-<style module lang="scss">
-.qrContainer {
-  display: grid;
-  justify-content: center;
-  justify-items: center;
-}
-</style>
+<style module lang="scss"></style>
